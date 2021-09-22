@@ -1,0 +1,2 @@
+clock_precision_clock_gettime:
+	gcc clock_precision_clock_gettime.c -o clock_precision_clock_gettime
