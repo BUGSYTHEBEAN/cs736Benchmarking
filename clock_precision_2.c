@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
         timespec_get(&start, TIME_UTC);
         timespec_get(&stop, TIME_UTC);
         long int current = stop.tv_nsec - start.tv_nsec;
-        if (current < min) {
+        if (current < min && current > 0) {
             min = current;
             printf("Elapsed time in nanoseconds: %li\n", min);
         }
