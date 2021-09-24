@@ -7,10 +7,15 @@ int main(int argc, char *argv[]) {
     struct timespec start;
     struct timespec stop;
     long int min = __INT_MAX__;
-    for(;;) {
-        timespec_get(&start, TIME_UTC);
+    
+    for (;;) {
+        if (clock_gettime(CLOCK_REALTIME, &start) == -1) {
+            perror("Starting the clock failed");
+        }
         getgid();
-        timespec_get(&stop, TIME_UTC);
+        if (clock_gettime(CLOCK_REALTIME, &stop) == -1) {
+            perror("Stopping the clock failed");
+        }
         long int current = stop.tv_nsec - start.tv_nsec;
         if (current < min && current > 0) {
             min = current;
