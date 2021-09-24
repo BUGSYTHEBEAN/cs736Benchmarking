@@ -8,7 +8,7 @@ all:
 	make socketpair_throughput
 
 clean:
-	rm -f clock_precision_1 clock_precision_2 kernel_call_1 kernel_call_2 socketpair
+	rm -f clock_precision_1 clock_precision_2 kernel_call_1 kernel_call_2 socketpair_latency socketpair_throughput
 
 clock_precision_1:
 	gcc clock_precision_1.c -o clock_precision_1

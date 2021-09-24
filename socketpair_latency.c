@@ -6,10 +6,12 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#define K 1024
+#define Ki 1024
+
 #define PARENT_SOCKET 0
 #define CHILD_SOCKET 1
-#define MESSAGE_SIZE 512*K
+
+#define MESSAGE_SIZE 512*Ki
 
 int main(int argc, char *argv[]) {
     int socket[2];
