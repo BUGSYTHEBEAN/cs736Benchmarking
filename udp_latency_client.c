@@ -8,12 +8,9 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-#define Ki 1024
+#define K 1024
 
-#define PARENT_SOCKET 0
-#define CHILD_SOCKET 1
-
-#define MESSAGE_SIZE 4
+#define MESSAGE_SIZE 63*K + 995 //768
 
 int main(int argc, char *argv[]) {
     int sock;
@@ -29,11 +26,10 @@ int main(int argc, char *argv[]) {
         perror("Creating the socketpair failed");
     }
 
-    server.sin_port = htons(2000);
-    server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_family = AF_INET;
+    server.sin_port = htons(6969);
 
-    // binding worked start looking for the transfers
     int serverSize = sizeof(server);
     for(;;){    // loop
         //start clock
