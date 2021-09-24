@@ -1,3 +1,4 @@
+# Sample Makefile based on https://opensource.com/article/18/8/what-how-makefile
 # Usage:
 # make        # compile all binary
 # make clean  # remove ALL binaries and objects
