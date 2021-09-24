@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
     memset(message, 0, sizeof(message));
     sock = socket(AF_INET, SOCK_DGRAM, 0);
     if (sock == -1) {
-        perror("Creating the socketpair failed");
+        perror("Creating the UDP socket failed");
     }
 
     server.sin_addr.s_addr = INADDR_ANY;
@@ -31,21 +31,21 @@ int main(int argc, char *argv[]) {
     server.sin_port = htons(6969);
 
     int serverSize = sizeof(server);
-    for(;;){    // loop
-        //start clock
+    for (;;) {
+        // Start clock
         if (clock_gettime(CLOCK_REALTIME, &start) == -1) {
             perror("Starting the clock failed");
         }
-        //respond
-        if (sendto(sock, message, MESSAGE_SIZE, 0, (struct sockaddr*)&server, serverSize) == -1){
-            perror("error send");
+        // Respond
+        if (sendto(sock, message, MESSAGE_SIZE, 0, (struct sockaddr*) &server, serverSize) == -1) {
+            perror("Error sent");
         }
         
-        //recieve
-        if (recvfrom(sock, message, MESSAGE_SIZE, 0, (struct sockaddr*)&server, &serverSize) == -1){
-            perror("error recieve");
+        // Recieve
+        if (recvfrom(sock, message, MESSAGE_SIZE, 0, (struct sockaddr*) &server, &serverSize) == -1) {
+            perror("Error recieved");
         }
-        //end clock
+        // End clock
         if (clock_gettime(CLOCK_REALTIME, &stop) == -1) {
             perror("Stopping the clock failed");
         }   

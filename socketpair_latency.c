@@ -13,17 +13,6 @@
 
 #define MESSAGE_SIZE 512 * Ki
 
-void write_until_full(int sockets[], char* message, int socket) {
-    ssize_t total_write = 0;
-    while (total_write < MESSAGE_SIZE) {
-        ssize_t current_write = write(sockets[socket], &message[total_write], MESSAGE_SIZE - total_write);
-        if (current_write == -1) {
-            perror("Writing to socket failed");
-        }
-        total_write += current_write;
-    }
-}
-
 void read_until_full(int sockets[], char* message, int socket) {
     ssize_t total_read = 0;
     while (total_read < MESSAGE_SIZE) {
@@ -32,6 +21,17 @@ void read_until_full(int sockets[], char* message, int socket) {
             perror("Reading from socket failed");
         }
         total_read += current_read;
+    }
+}
+
+void write_until_full(int sockets[], char* message, int socket) {
+    ssize_t total_write = 0;
+    while (total_write < MESSAGE_SIZE) {
+        ssize_t current_write = write(sockets[socket], &message[total_write], MESSAGE_SIZE - total_write);
+        if (current_write == -1) {
+            perror("Writing to socket failed");
+        }
+        total_write += current_write;
     }
 }
 
