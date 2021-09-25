@@ -11,6 +11,7 @@
 #define Ki 1024
 
 #define MESSAGE_SIZE 63 * Ki + 995
+#define PORT 6969
 
 int main(int argc, char *argv[]) {
     int sock;
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]) {
 
     server.sin_addr.s_addr = INADDR_ANY;
     server.sin_family = AF_INET;
-    server.sin_port = htons(6969);
+    server.sin_port = htons(PORT);
 
     if (bind(sock, (struct sockaddr*) &server, sizeof(server)) == -1) {
         perror("Binding socket failed");

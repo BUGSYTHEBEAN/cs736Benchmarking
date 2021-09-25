@@ -11,6 +11,9 @@
 #define Ki 1024
 
 #define MESSAGE_SIZE 63 * Ki + 995
+#define PORT 6969
+
+#define IP "128.105.37.156"
 
 int main(int argc, char *argv[]) {
     int sock;
@@ -26,9 +29,9 @@ int main(int argc, char *argv[]) {
         perror("Creating the UDP socket failed");
     }
 
-    server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_addr.s_addr = inet_addr(IP);
     server.sin_family = AF_INET;
-    server.sin_port = htons(6969);
+    server.sin_port = htons(PORT);
 
     int serverSize = sizeof(server);
     for (;;) {
