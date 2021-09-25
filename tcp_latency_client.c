@@ -13,7 +13,7 @@
 #define MESSAGE_SIZE 512 * Ki
 #define PORT 6969
 
-#define LOCALHOST "127.0.0.1"
+#define IP "128.105.37.156"
 
 void read_until_full(int connection, char* message) {
     ssize_t total_read = 0;
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
         perror("Creating the TCP socket failed");
     }
 
-    server.sin_addr.s_addr = inet_addr(LOCALHOST);
+    server.sin_addr.s_addr = inet_addr(IP);
     server.sin_family = AF_INET;
     server.sin_port = htons(PORT);    
 

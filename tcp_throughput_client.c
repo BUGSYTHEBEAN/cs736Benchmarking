@@ -17,7 +17,7 @@
 #define PORT 6969
 #define NS_PER_S 1000000000
 
-#define LOCALHOST "127.0.0.1"
+#define IP "128.105.37.156"
 
 void write_until_full(int connection, char* message) {
     ssize_t total_write = 0;
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
         perror("Creating the TCP socket failed");
     }
 
-    server.sin_addr.s_addr = inet_addr(LOCALHOST);
+    server.sin_addr.s_addr = inet_addr(IP);
     server.sin_family = AF_INET;
     server.sin_port = htons(PORT);    
 

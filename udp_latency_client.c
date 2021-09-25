@@ -8,9 +8,9 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-#define K 1024
+#define Ki 1024
 
-#define MESSAGE_SIZE 63*K + 995 //768
+#define MESSAGE_SIZE 63 * Ki + 995
 
 int main(int argc, char *argv[]) {
     int sock;

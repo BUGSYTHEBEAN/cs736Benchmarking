@@ -8,13 +8,9 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-#define K 1024
+#define Ki 1024
 
-<<<<<<< HEAD
-#define MESSAGE_SIZE 63*K + 995 //768
-=======
-#define MESSAGE_SIZE 4
->>>>>>> TCP
+#define MESSAGE_SIZE 63 * Ki + 995
 
 int main(int argc, char *argv[]) {
     int sock;
@@ -30,11 +26,6 @@ int main(int argc, char *argv[]) {
         perror("Creating the UDP socket failed");
     }
 
-<<<<<<< HEAD
-=======
-    server.sin_port = htons(6969);
-    server.sin_family = AF_INET;
->>>>>>> TCP
     server.sin_addr.s_addr = INADDR_ANY;
     server.sin_family = AF_INET;
     server.sin_port = htons(6969);
